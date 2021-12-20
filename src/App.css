@@ -7,7 +7,7 @@ article {
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(50, 1fr);
-  grid-template-rows: repeat(50,1r);
+  grid-template-rows: repeat(50,1fr);
   width:500px
 }
 
