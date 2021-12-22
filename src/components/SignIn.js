@@ -4,8 +4,7 @@ const SignIn = ({ user, updateUser }) => {
 	const emailRef = useRef();
 	const pwRef = useRef();
 
-	const signIn = (e) => (userName, pw) => {
-		e.preventDefault();
+	const signIn = (userName, pw) => {
 		fetch(`http://localhost:8000/sign-in/`, {
 			method: 'POST',
 			headers: {
@@ -22,7 +21,8 @@ const SignIn = ({ user, updateUser }) => {
 					token: data.user.token,
 					id: data.user.id,
 				});
-			});
+			})
+			.catch(console.error);
 	};
 
 	return (
@@ -32,7 +32,6 @@ const SignIn = ({ user, updateUser }) => {
 				onSubmit={(e) => {
 					e.preventDefault();
 					signIn(emailRef.current.value, pwRef.current.value);
-					console.log('signed in');
 				}}>
 				<label htmlFor='email'>Email: </label>
 				<input type='email' ref={emailRef} name='email' />

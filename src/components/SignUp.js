@@ -6,14 +6,15 @@ const SignUp = ({ user, updateUser }) => {
 	const pwRef1 = useRef();
 	const pwRef2 = useRef();
 
-	const signUp = (e) => (userName, pw) => {
-		e.preventDefault();
+	const signUp = (userName, pw) => {
+		console.log('hit sign up function');
+		const data = JSON.stringify({ user: { email: userName, password: pw } });
 		fetch(`http://localhost:8000/sign-up/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ user: { email: userName, password: pw } }),
+			body: data,
 		})
 			.then((r) => r.json())
 			.then((data) => {
@@ -21,11 +22,10 @@ const SignUp = ({ user, updateUser }) => {
 				updateUser({
 					...user,
 					userName: data.user.email,
-					token: data.user.token,
 					id: data.user.id,
 				});
 			})
-			.catch(console.error);
+			.catch((error) => console.error('Error: ', error));
 	};
 
 	return (
@@ -34,8 +34,11 @@ const SignUp = ({ user, updateUser }) => {
 				className='account_form'
 				onSubmit={(e) => {
 					e.preventDefault();
+					console.log('clicked');
 					if (emailRef1.current.value === emailRef2.current.value) {
+						console.log('email match');
 						if (pwRef1.current.value === pwRef2.current.value) {
+							console.log('pw match');
 							signUp(emailRef1.current.value, pwRef1.current.value);
 						} else {
 							alert('Your passwords must match');

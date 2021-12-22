@@ -5,8 +5,7 @@ const ChangePW = ({ user, updateUser }) => {
 	const newPWRef1 = useRef();
 	const newPWRef2 = useRef();
 
-	const changePW = (e) => (token, oldPW, newPW) => {
-		e.preventDefault();
+	const changePW = (token, oldPW, newPW) => {
 		fetch(`http://localhost:8000/change-pw/${user.id}`, {
 			method: 'PATCH',
 			headers: {
