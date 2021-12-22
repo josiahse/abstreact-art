@@ -1,15 +1,15 @@
+import React, { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+
 import './App.css';
-// import Customize from './components/Customize';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Grid from './components/Grid';
 import SignUp from './components/SignUp';
-import SignUpHeader from './components/SignUpHeader'
+import UserPage from './components/UserPage';
 import SignIn from './components/SignIn';
 import ChangePW from './components/ChangePW';
-
-import React, { useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
 	const [grid, setGrid] = useState(null);
@@ -27,12 +27,7 @@ function App() {
 				<Route
 					path='/'
 					element={
-						<Grid
-							width={42}
-							userGrid={user.gridStr}
-							grid={grid}
-							updateGrid={setGrid}
-						/>
+						<Grid width={42} user={user} grid={grid} updateGrid={setGrid} />
 					}></Route>
 
 				<Route
@@ -44,8 +39,17 @@ function App() {
 				<Route
 					path='/change-pw'
 					element={<ChangePW user={user} updateUser={setUser} />}></Route>
+				<Route
+					path='/user/:id'
+					element={
+						<UserPage
+							user={user}
+							updateUser={setUser}
+							grid={grid}
+							updateGrid={setGrid}
+						/>
+					}></Route>
 			</Routes>
-      {user.id ? '' : <SignUpHeader />}
 			{user.id ? <Footer user={user} updateUser={setUser} /> : ''}
 		</div>
 	);

@@ -17,7 +17,8 @@ a:link {
 a:visited {
 	color: rgb(24, 31, 70);
 }
-a:hover, a.account_link {
+a:hover,
+a.account_link {
 	color: rgb(24, 31, 70);
 	text-decoration: underline;
 }
@@ -28,16 +29,16 @@ a:active {
 #color_grid {
 	margin: 0 auto;
 	margin-top: 10%;
-  margin-bottom: 10%;
+	margin-bottom: 10%;
 }
 
 .title {
 	text-align: center;
+	margin-top: 8%;
 }
 
 .header,
 .footer {
-	/* border: 1px solid black; */
 	margin: 0;
 	display: flex;
 	justify-content: space-around;
@@ -50,27 +51,43 @@ a:active {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0;
+  align-items: center;
 }
 
 .redo_div {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .fa-redo {
-  font-size: 35px;
+	font-size: 35px;
 }
 
 .signUpHeader {
-  text-align: center;
-  margin-top: 25%;
+	text-align: center;
+	margin-top: 25%;
 }
 
 .signup {
-  font-size: 24px;
+	font-size: 24px;
 }
 
-form {
-	margin: 0 auto;
+.account-h2 {
 	text-align: center;
+	margin-top: 10%;
+}
+
+.account_form {
+	text-align: right;
+	margin-right: 8%;
+	margin-top: 5%;
+	font-size: 15px;
+}
+
+.sign_out {
+	border: none;
+	background-color: white;
+	color: rgb(24, 31, 70);
+	font-family: 'Sorts Mill Goudy', serif;
+	font-size: 16px;
 }

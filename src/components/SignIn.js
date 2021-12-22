@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = ({ user, updateUser }) => {
 	const emailRef = useRef();
 	const pwRef = useRef();
+  const navigate = useNavigate();
 
 	const signIn = (userName, pw) => {
 		fetch(`http://localhost:8000/sign-in/`, {
@@ -21,12 +23,15 @@ const SignIn = ({ user, updateUser }) => {
 					token: data.user.token,
 					id: data.user.id,
 				});
+        console.log(user)
+        navigate(`/user/${user.id}`);
 			})
 			.catch(console.error);
 	};
 
 	return (
 		<div className='account-div'>
+			<h2 className='account-h2'>Log In</h2>
 			<form
 				className='account_form'
 				onSubmit={(e) => {

@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = ({ user, updateUser }) => {
 	const emailRef1 = useRef();
 	const emailRef2 = useRef();
 	const pwRef1 = useRef();
 	const pwRef2 = useRef();
+
+  const navigate = useNavigate();
 
 	const signUp = (userName, pw) => {
 		console.log('hit sign up function');
@@ -24,13 +27,15 @@ const SignUp = ({ user, updateUser }) => {
 					userName: data.user.email,
 					id: data.user.id,
 				});
+        navigate(`/user/${user.id}`);
 			})
 			.catch((error) => console.error('Error: ', error));
 	};
 
 	return (
 		<div className='account-div'>
-			<form
+			<h2 className="account-h2">Create Account</h2>
+      <form
 				className='account_form'
 				onSubmit={(e) => {
 					e.preventDefault();

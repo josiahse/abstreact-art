@@ -1,29 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Footer = ({user, updateUser}) => {
-	const signOut = (e) => (token) => {
-		e.preventDefault()
-    fetch(`http://localhost:8000/sign-out/${user.id}`, {
+const Footer = ({ user, updateUser }) => {
+	const navigate = useNavigate();
+	const signOut = () => (e) => {
+		e.preventDefault();
+
+		const data = JSON.stringify({
+			user: { id: user.id, email: user.userName },
+		});
+		fetch(`http://localhost:8000/sign-out/`, {
 			method: 'DELETE',
 			headers: {
-				Authorization: `Token ${token}`,
+				'Content-Type': 'application/json',
+				Authorization: `Token ${user.token}`,
 			},
+			body: data,
 		})
 			.then((r) => r.json())
-			.then((data) =>
+			.then(() => {
 				updateUser({
 					userName: null,
 					id: null,
 					token: null,
 					gridStr: null,
-				})
-			);
+				});
+				navigate('/');
+			})
+			.catch((error) => console.error('Error: ', error));
 	};
-  return (
+
+	return (
 		<div className='footer'>
 			<Link to='/change-pw'>Change Password</Link>
-			<button onClick={signOut(user.token)}>Sign Out</button>
+			<button className='sign_out' onClick={signOut()}>
+				Sign Out
+			</button>
 		</div>
 	);
 };

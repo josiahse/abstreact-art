@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-const Grid = ({ width, userGrid, grid, updateGrid }) => {
+import SignUpHeader from './SignUpHeader';
+
+const Grid = ({ width, user, grid, updateGrid }) => {
 	const color_hex = [
 		'0',
 		'1',
@@ -88,13 +90,16 @@ const Grid = ({ width, userGrid, grid, updateGrid }) => {
 			<div id='color_grid' style={gridStyle}>
 				{grid}
 			</div>
-			<div className="redo_div"><i onClick={() => setRR(!rr)} className='fas fa-redo'></i></div>
+			<div className='redo_div'>
+				<i onClick={() => setRR(!rr)} className='fas fa-redo'></i>
+			</div>
+			{user.id ? '' : <SignUpHeader />}
 		</div>
 	);
 
 	useEffect(() => {
 		updateGridDimensions();
-		checkUserGrid(userGrid);
+		checkUserGrid(user.grid);
 	}, [rr, window.innerWidth]);
 	return gridJsx;
 };
