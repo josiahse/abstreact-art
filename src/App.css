@@ -1,15 +1,34 @@
 body {
 	margin: 0 auto;
+	font-family: 'Sorts Mill Goudy', serif;
 }
 
 .App {
 	margin: 0 auto;
 }
 
+a {
+	text-decoration: none;
+}
+
+a:link {
+	color: rgb(24, 31, 70);
+}
+a:visited {
+	color: rgb(24, 31, 70);
+}
+a:hover, a.account_link {
+	color: rgb(24, 31, 70);
+	text-decoration: underline;
+}
+a:active {
+	color: rgb(24, 31, 70);
+}
+
 #color_grid {
 	margin: 0 auto;
-	margin-top: 40px;
-
+	margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .title {
@@ -18,10 +37,11 @@ body {
 
 .header,
 .footer {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	margin: 0;
-  display: flex;
-  justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
+	height: 60px;
 }
 
 .footer {
@@ -32,8 +52,22 @@ body {
 	padding: 0;
 }
 
-.customize {
-	margin: 0 auto;
+.redo_div {
+  display: flex;
+  justify-content: center;
+}
+
+.fa-redo {
+  font-size: 35px;
+}
+
+.signUpHeader {
+  text-align: center;
+  margin-top: 25%;
+}
+
+.signup {
+  font-size: 24px;
 }
 
 form {

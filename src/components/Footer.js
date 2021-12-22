@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Footer = ({user}) => {
+const Footer = ({user, updateUser}) => {
 	const signOut = (e) => (token) => {
 		e.preventDefault()
     fetch(`http://localhost:8000/sign-out/${user.id}`, {
@@ -11,12 +11,17 @@ const Footer = ({user}) => {
 			},
 		})
 			.then((r) => r.json())
-			.then((data) => data);
+			.then((data) =>
+				updateUser({
+					userName: null,
+					id: null,
+					token: null,
+					gridStr: null,
+				})
+			);
 	};
   return (
 		<div className='footer'>
-			<Link to='/sign-up'>Sign Up</Link>
-			<Link to='/sign-in'>Log In</Link>
 			<Link to='/change-pw'>Change Password</Link>
 			<button onClick={signOut(user.token)}>Sign Out</button>
 		</div>
