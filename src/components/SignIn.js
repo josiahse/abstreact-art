@@ -4,27 +4,28 @@ import { useNavigate } from 'react-router-dom';
 const SignIn = ({ user, updateUser }) => {
 	const emailRef = useRef();
 	const pwRef = useRef();
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-	const signIn = (userName, pw) => {
+	const signIn = (userNameParam, pw) => {
 		fetch(`http://localhost:8000/sign-in/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ user: { email: userName, password: pw } }),
+			body: JSON.stringify({ user: { email: userNameParam, password: pw } }),
 		})
-			.then((r) => r.json())
+			.then((response) => response.json())
 			.then((data) => {
-				console.log('fetch success');
-				updateUser({
-					...user,
+				console.log(data);
+        const updatedUser = {
 					userName: data.user.email,
 					token: data.user.token,
 					id: data.user.id,
-				});
-        console.log(user)
-        navigate(`/user/${user.id}`);
+					grids: [],
+				};
+				updateUser(updatedUser);
+				console.log(user);
+				navigate(`/user/${user.id}`);
 			})
 			.catch(console.error);
 	};

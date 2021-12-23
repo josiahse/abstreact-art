@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -17,7 +17,7 @@ function App() {
 		userName: null,
 		id: null,
 		token: null,
-		gridStr: null,
+		grids: [],
 	});
 
 	return (
@@ -27,7 +27,13 @@ function App() {
 				<Route
 					path='/'
 					element={
-						<Grid width={42} user={user} grid={grid} updateGrid={setGrid} />
+						<Grid
+							width={42}
+							user={user}
+							updateUser={setUser}
+							grid={grid}
+							updateGrid={setGrid}
+						/>
 					}></Route>
 
 				<Route
