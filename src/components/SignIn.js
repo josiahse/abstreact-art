@@ -6,8 +6,8 @@ const SignIn = ({ user, updateUser }) => {
 	const pwRef = useRef();
 	const navigate = useNavigate();
 
-	const signIn = (userNameParam, pw) => {
-		fetch(`http://localhost:8000/sign-in/`, {
+	const signIn = async (userNameParam, pw) => {
+		await fetch(`http://localhost:8000/sign-in/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -16,16 +16,15 @@ const SignIn = ({ user, updateUser }) => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
-        const updatedUser = {
+				// console.log(data);
+				const updatedUser = {
 					userName: data.user.email,
 					token: data.user.token,
 					id: data.user.id,
-					grids: [],
 				};
-				updateUser(updatedUser);
-				console.log(user);
-				navigate(`/user/${user.id}`);
+				updateUser(updatedUser)
+				// console.log(user);
+				navigate(`/user/${user.id}/`);
 			})
 			.catch(console.error);
 	};

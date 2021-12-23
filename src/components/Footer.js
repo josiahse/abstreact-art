@@ -23,8 +23,7 @@ const Footer = ({ user, updateUser }) => {
 				updateUser({
 					userName: null,
 					id: null,
-					token: null,
-					gridStr: null,
+					token: null
 				});
 				navigate('/');
 			})
@@ -33,6 +32,7 @@ const Footer = ({ user, updateUser }) => {
 
 	return (
 		<div className='footer'>
+      <Link to={`/user/${user.id}`}>My Grids</Link>
 			<Link to='/change-pw'>Change Password</Link>
 			<button className='sign_out' onClick={signOut()}>
 				Sign Out

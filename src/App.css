@@ -52,11 +52,18 @@ a:active {
 	margin: 0 auto;
 	padding: 0;
   align-items: center;
+  background-color: white;
+  border-top: 1px solid orange;
 }
 
-.redo_div {
+.redo, .save-div {
 	display: flex;
 	justify-content: center;
+}
+
+.save {
+  font-size: 20px;
+  margin-top: 5%;
 }
 
 .fa-redo {
@@ -84,10 +91,30 @@ a:active {
 	font-size: 15px;
 }
 
-.sign_out {
+button {
 	border: none;
 	background-color: white;
 	color: rgb(24, 31, 70);
 	font-family: 'Sorts Mill Goudy', serif;
 	font-size: 16px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  
+}
+
+.gridCard {
+  display: flex;
+  height: 160px;
+}
+
+.grid_info {
+  width: 40%;
+  margin-top: 10%;
+  padding-left: 5%;
 }

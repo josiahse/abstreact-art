@@ -12,12 +12,11 @@ import SignIn from './components/SignIn';
 import ChangePW from './components/ChangePW';
 
 function App() {
-	const [grid, setGrid] = useState(null);
+	const [grid, setGrid] = useState([]);
 	const [user, setUser] = useState({
 		userName: null,
 		id: null,
 		token: null,
-		grids: [],
 	});
 
 	return (
